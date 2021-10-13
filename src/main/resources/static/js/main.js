@@ -6,7 +6,8 @@
 //TODO: select the list where the suggestions should go, the input box where we're typing, and
 // the loading text
 //HINT: look at the hTML
-const suggestionList = _;
+
+const suggestionList = document.getElement();
 const input = _;
 const loading = _;
 
