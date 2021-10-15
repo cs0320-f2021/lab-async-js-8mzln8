@@ -1,6 +1,5 @@
 package edu.brown.cs.student.main;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -106,7 +105,7 @@ public class Trie {
       char firstChar = prefix.charAt(0);
       if (children.containsKey(firstChar)) {
         return children.get(firstChar)
-            .findAllWithPrefix(prefix.substring(1), totalPrefix);
+                .findAllWithPrefix(prefix.substring(1), totalPrefix);
       } else {
         return Collections.emptySet();
       }
@@ -122,7 +121,7 @@ public class Trie {
    *          Characters built up to current node
    * @return All possible words formed from node in Trie
    */
-  	private Set<String> findAll(Set<String> currentList, String prefix) {
+  private Set<String> findAll(Set<String> currentList, String prefix) {
     if (isWord) {
       currentList.add(prefix);
     }
@@ -178,7 +177,7 @@ public class Trie {
    *         trie.
    */
   private Set<String> findLedWithin(String phrase, int maxDistance,
-      String prefix, Set<String> currentList) {
+                                    String prefix, Set<String> currentList) {
 
     int currentDist = maxDistance + 1;
 
@@ -196,7 +195,7 @@ public class Trie {
         sb.append(prefix);
         sb.append(c);
         possibilities.get(c).findLedWithin(phrase, maxDistance, sb.toString(),
-            currentList);
+                currentList);
       }
     }
     return currentList;
@@ -218,7 +217,7 @@ public class Trie {
   }
 
   /**
-   * Gets led between two words. 
+   * Gets led between two words.
    * Uses dynamic programming.
    *
    * @param word1
@@ -238,7 +237,7 @@ public class Trie {
         // Comparing if word1 was empty.
         if (i == 0) {
           ledMatrix[i][j] = j;
-        } 
+        }
         // Comparing is word2 was empty.
         else if (j == 0) {
           ledMatrix[i][j] = i;
@@ -249,9 +248,9 @@ public class Trie {
           if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
             substitution = 0;
           }
-          // Take min of insertion, deletion, substituion. 
-          ledMatrix[i][j] = Math.min(Math.min(ledMatrix[i][j - 1] + 1, ledMatrix[i - 1][j] + 1), 
-            ledMatrix[i - 1][j - 1] + substitution);
+          // Take min of insertion, deletion, substituion.
+          ledMatrix[i][j] = Math.min(Math.min(ledMatrix[i][j - 1] + 1, ledMatrix[i - 1][j] + 1),
+                  ledMatrix[i - 1][j - 1] + substitution);
         }
       }
     }
